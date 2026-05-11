@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato Trabajo Fijo - CAPITAL INVESTMENTS S.A.S. 2026</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>CONTRATO DE TRABAJO A TÉRMINO FIJO</h1>
+        <p>Cumple CST Arts.44-46, Ley 50/1990, Ley 2466/2025 (máx 4 años), SS Ley 100/1993 | SMLMV 2026: $1.423.500</p>
+    </header>
+    <main>
+        <form id="contratoForm" novalidate>
+            <section aria-labelledby="partes-h2">
+                <h2 id="partes-h2">PARTES</h2>
+                <div class="row">
+                    <div class="col">
+                        <label for="nitEmp">NIT Empleador:</label>
+                        <input type="text" id="nitEmp" value="901055873-8" required aria-required="true">
+                    </div>
+                    <div class="col">
+                        <label for="nomEmp">Empleador:</label>
+                        <input type="text" id="nomEmp" value="CAPITAL INVESTMENTS S.A.S." required>
+                    </div>
+                </div>
+                <label for="nomTrab">Trabajador Completo:</label>
+                <input type="text" id="nomTrab" required>
+                <label for="ccTrab">Tipo y Nº Documento:</label>
+                <input type="text" id="ccTrab" required>
+                <label for="cargo">Cargo:</label>
+                <input type="text" id="cargo" placeholder="Ej: Operario Temporal" required>
+            </section>
+
+            <section aria-labelledby="duracion-h2">
+                <h2 id="duracion-h2">DURACIÓN (Excepcional, CST Art.46)</h2>
+                <div class="row">
+                    <div class="col">
+                        <label for="meses">Meses:</label>
+                        <input type="number" id="meses" min="1" max="48" value="6" required>
+                    </div>
+                    <div class="col">
+                        <label for="fechaIni">Inicio:</label>
+                        <input type="date" id="fechaIni" required>
+                    </div>
+                    <div class="col">
+                        <label for="fechaFin">Fin (auto):</label>
+                        <input type="date" id="fechaFin" readonly>
+                    </div>
+                </div>
+                <p class="nota-legal">Nota: Máx 48 meses totales (prórrogas incl.). Excede → Indefinido (Ley 2466/2025)</p>
+            </section>
+
+            <section aria-labelledby="salario-h2">
+                <h2 id="salario-h2">SALARIO Y JORNADA</h2>
+                <label for="salario">Salario Mensual:</label>
+                <input type="number" id="salario" min="1423500" value="1423500" required>
+                <label for="jornada">Jornada Semanal (máx 47h):</label>
+                <input type="number" id="jornada" min="1" max="47" value="40" required>
+            </section>
+
+            <section aria-labelledby="ss-h2">
+                <h2 id="ss-h2">SEGURIDAD SOCIAL (Afiliación Día 1, PILA)</h2>
+                <div class="row">
+                    <div class="col"><label for="eps">EPS:</label><input type="text" id="eps" required></div>
+                    <div class="col"><label for="pension">Pensión:</label><input type="text" id="pension" required></div>
+                    <div class="col"><label for="arl">ARL:</label><input type="text" id="arl" required></div>
+                </div>
+            </section>
+
+            <section aria-labelledby="checklist-h2">
+                <h2 id="checklist-h2">CHECKLIST VERIFICACIÓN (100% Sí Requerido)</h2>
+                <table role="grid" aria-label="Checklist Legal">
+                    <thead><tr><th>Ítem</th><th>Sí/No</th><th>Obs</th></tr></thead>
+                    <tbody>
+                        <tr><td>Afiliación SS Día 1 (PILA/RUAF ok)</td><td><input type="checkbox" id="chk1" aria-label="Sí SS"></td><td><input type="text" size="10"></td></tr>
+                        <tr><td>Duración ≤48 meses + Causal fija</td><td><input type="checkbox" id="chk2"></td><td><input type="text" size="10"></td></tr>
+                        <tr><td>Salario ≥SMLMV, Cláusulas Terminación</td><td><input type="checkbox" id="chk3"></td><td><input type="text" size="10"></td></tr>
+                        <tr><td>Firmas + Testigos (2)</td><td><input type="checkbox" id="chk4"></td><td><input type="text" size="10"></td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="clausulas" aria-labelledby="clausulas-h2">
+                <h2 id="clausulas-h2">CLÁUSULAS FIJAS (No Editar)</h2>
+                <div class="clausula">
+                    <p><strong>Objeto:</strong> Servicios temporales por causa justificada (obra específica). <strong>Prestaciones:</strong> Cesantías 8.33%, Prima 15/50, Vacaciones proporcionales.</p>
+                    <p><strong>Terminación:</strong> Al fin fecha, sin indemnización salvo despido injusto. Prueba: 5% duración (máx 2 meses).</p>
+                    <p><strong>Jurisdicción:</strong> Villavicencio, Meta. Actualización anual reformas MinTrabajo.</p>
+                </div>
+            </section>
+        </form>
+        <button onclick="generarContratoFijo()" aria-label="Generar PDF Legal">✅ Generar PDF Cumplimiento Legal</button>
+        <div id="mensaje" aria-live="polite"></div>
+    </main>
+    <footer style="text-align:center; margin-top:30px; color:#7f8c8d;">
+        Plantilla CAPITAL INVESTMENTS S.A.S. | Mayo 2026 | Abogado Revisión Requerida
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
